@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog id="uploadDialog" title="Upload Files" contentHeight="50%" contentWidth="50%" stretchOnPhone="true"
+		beginButton="{ text: 'Upload', press: 'onUpload' }" endButton="{ text: 'Cancel', press: 'onCancel' }">
+		<VBox>
+			<UploadCollection id="uploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" noDataText="No files to display"
+				change="onFileChange" uploadComplete="onUploadComplete"></UploadCollection>
+		</VBox>
+		<endButton>
+			<Button text="Close" type="Emphasized" press="onCancel"></Button>
+		</endButton>
+		<beginButton></beginButton>
+	</Dialog>
+</core:FragmentDefinition>

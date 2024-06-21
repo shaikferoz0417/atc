@@ -1,0 +1,65 @@
+{
+    "VendorDetails":[
+        {
+            "SNO": 1,
+            "VENDORID": "V001",
+            "VENDORNAME": "Apple Inc.",
+            "VENDORCATEGORY": "Electronics"
+        },
+        {
+            "SNO": 2,
+            "VENDORID": "V002",
+            "VENDORNAME": "Nike Inc.",
+            "VENDORCATEGORY": "Apparel"
+        },
+        {
+            "SNO": 3,
+            "VENDORID": "V003",
+            "VENDORNAME": "Walmart",
+            "VENDORCATEGORY": "Groceries"
+        },
+        {
+            "SNO": 4,
+            "VENDORID": "V004",
+            "VENDORNAME": "Samsung",
+            "VENDORCATEGORY": "Electronics"
+        },
+        {
+            "SNO": 5,
+            "VENDORID": "V005",
+            "VENDORNAME": "IKEA",
+            "VENDORCATEGORY": "Home Goods"
+        },
+        {
+            "SNO": 6,
+            "VENDORID": "V006",
+            "VENDORNAME": "Ford Motor Company",
+            "VENDORCATEGORY": "Automotive"
+        },
+        {
+            "SNO": 7,
+            "VENDORID": "V007",
+            "VENDORNAME": "Pfizer",
+            "VENDORCATEGORY": "Healthcare"
+        },
+        {
+            "SNO": 8,
+            "VENDORID": "V008",
+            "VENDORNAME": "Ashley Furniture",
+            "VENDORCATEGORY": "Furniture"
+        },
+        {
+            "SNO": 9,
+            "VENDORID": "V009",
+            "VENDORNAME": "Hasbro",
+            "VENDORCATEGORY": "Toys"
+        },
+        {
+            "SNO": 10,
+            "VENDORID": "V010",
+            "VENDORNAME": "Penguin Random House",
+            "VENDORCATEGORY": "Books"
+        }
+    ]
+    
+}    

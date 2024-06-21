@@ -1,0 +1,191 @@
+<mvc:View controllerName="invoice.finaldemo.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:ui="sap.ui.table" xmlns:f="sap.ui.layout.form">
+    <Shell id="shell">
+		<App id="app" class="myAppDemoWT">
+			<pages>
+				<Page id="page" titleAlignment="Center">
+					<customHeader>
+						<Bar id="_IDGenBar1">
+							<contentLeft>
+								<Image id="_IDGenImage1" src="{logoModel>/logoSrc}" alt="Logo" height="{logoModel>/height}" width="{logoModel>/width}"/>
+							</contentLeft>
+							<contentMiddle>
+								<FlexBox id="_IDGenFlexBox1" alignItems="Center" justifyContent="Center">
+									<items>
+										<Text id="_IDGenText1" text="SUPPLIER PORTAL" textAlign="Center" renderWhitespace="true" class="redText"/>
+									</items>
+								</FlexBox>
+							</contentMiddle>
+                            	
+						</Bar>
+					</customHeader>
+					<content>
+						<IconTabBar id="idIconTabBarFiori21" expandable="false" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" >
+							<items>
+								<IconTabFilter id="_IDGenIconTabFilter1" text="UPLOAD INVOICE" key="approverDelegation">
+								  <ScrollContainer id="_IDGenScrollContainer1" width="auto" height="400px" horizontal="true" vertical="false">
+						  <Table id="idApproverTable" inset="false" items="{ path: 'approverDataModel>/Approvers' }" mode="MultiSelect">
+        <headerToolbar>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                <Button id="_IDGenButton1" text="ADD" type="Emphasized" press="onAdd" icon="sap-icon://add"/>
+				 <Button id="refresh-data-button-administrator-tab" text="Refresh Data" press="onRefreshTab1" type="Emphasized"
+														icon="sap-icon://refresh" />
+            <!-- <Button text="Save" type="Emphasized" press="saveSelectedToModel" enabled="true" id="saveButton" icon="sap-icon://save"/> -->
+			<Button text="Delete" type="Emphasized" press="onDeleteSelected" enabled="true" id="deleteButton" icon="sap-icon://delete"/>
+								
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="_IDGenColumn1">
+                <Text id="_IDGenText2" text="TRADE ID"/>
+            </Column>
+			<Column id="_IDGenColumn18">
+             <Text id="_IDGenText19" text="TRADE NAME"/>
+            </Column>
+			<Column id="_IDGenColumn20">
+                <Text id="_IDGenText21" text="VENDOR ID"/>
+            </Column>
+			<Column id="_IDGenColumn21">
+                <Text id="_IDGenText20" text="VENDOR NAME"/>
+            </Column>
+			<Column id="_IDGenColumn3">
+                <Text id="_IDGenText4" text="VENDOR CATEGORY"/>
+            </Column>
+            <Column id="_IDGenColumn2">
+                <Text id="_IDGenText3" text="COMMENTS"/>
+            </Column>
+			 <Column id="_IDGenColumni2">
+                <Text id="_IDGenTextk3" text="DATE"/>
+            </Column>
+          <Column id="_IDGenColumn4">
+            <Text id="_IDGenText5" text="INVOICE"/>
+             </Column>
+			   <Column id="_IDGenColuumn4">
+            <Text id="_IDGenText" text="ACTIONS"/>
+             </Column>
+			
+        </columns>
+        <items>
+            <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+                <cells>
+				  <ComboBox id="_IDGenComboBox1" 
+                        selectedKey="{approverDataModel>tradeId}" 
+                        selectionChange="onTradeIdChange"
+                        items="{successIdModel>/data}">
+                        <core:Item id="_IDGenItem1" key="{successIdModel>tradeId}" text="{successIdModel>tradeId}"/>
+                    </ComboBox>
+                    <Text id="_IDGenTexto21" text="{approverDataModel>tradeName}" />
+                    <Text id="_IDGenText22" text="{approverDataModel>vendorId}" />
+                    <Text id="_IDGenText23" text="{approverDataModel>vendorName}" />
+                    <Text id="_IDGenText24" text="{approverDataModel>vendorCategory}" />
+                    <Text id="_IDGenText25" text="{approverDataModel>comments}" />
+					 <DatePicker id="_IDGenDatePicker1"
+                        value="{approverDataModel>currentDate}"
+                        placeholder="Enter Date"/>
+                 
+                    <u:FileUploader id="_IDGenFileUploader1"
+                        value="{approverDataModel>filePath}"
+                        name="myFileUpload"
+						change="onFileChange"
+                        tooltip="Upload your file to the local server"/>
+                      <Button id="_IDGenButton3" text="Save" type="Emphasized" press="onSaveRow" icon="sap-icon://save" />
+					 
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+	 </ScrollContainer>
+	</IconTabFilter>
+  <IconTabFilter id="_IDGenIconTabFilter2" text="RECORDS IN PROGRESS" key="recordInProgress">
+
+            <OverflowToolbar id="_IDGenOverflowiToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarnSpacer1"/>
+	 <Button id="refresh-data-button-administrator-tab2" text="Refresh Data" press="onRefreshTab2" type="Emphasized"
+														icon="sap-icon://refresh" />
+   </OverflowToolbar>
+       
+ 
+	  <ScrollContainer id="_IDGenScrollContIainer1" width="auto" height="600px" horizontal="true" vertical="false">
+
+  <Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: 'successIModel>/data',
+        sorter: {
+            path: 'currentDate',
+            descending: false
+        }
+		}">
+		
+		<columns>
+			<Column id="_IDGenColumn5"
+				width="12em">
+				<Text id="_IDGenText6" text="TRADE ID" />
+			</Column>
+			<Column id="_IDGenColumn13"
+				width="12em">
+                <Text id="_IDGenText14" text="TRADE NAME" />
+			</Column>
+            <Column id="_IDGenColumn7"
+				width="12em">
+				<Text id="_IDGenText8" text="VENDOR ID" />
+			</Column>
+            <Column id="_IDGenColumn9"
+				width="12em">
+				<Text id="_IDGenText10" text="VENDOR NAME" />
+			</Column>
+			 <Column id="_IDGenColumn14"
+				width="12em">
+				<Text id="_IDGenText15" text="VENDOR CATEGORY" />
+			</Column>
+			<Column id="_IDGenColumn16"
+				width="12em">
+				<Text id="_IDGenText18" text="COMMENTS" />
+			</Column>
+           	<Column id="_IDGenCoUlumn16"
+				width="12em">
+				<Text id="_IDGenTex7t18" text="DATE" />
+			</Column>
+				<Column id="_IDGenCoU0lumn16"
+				width="12em">
+				<Text id="_IDGenTex7Lt18" text="PREVIEW" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="_IDGenColumnListItem2" vAlign="Middle">
+				<cells>
+			
+					<Text id="_IDGenText7"
+						text="{successIModel>tradeId}" />
+                        <Text id="_IDGenText11"
+						text="{successIModel>tradeName}" />
+                        <Text id="_IDGenText12"
+						text="{successIModel>vendorId}" />
+						<Text id="_IDGenText16"
+						text="{successIModel>vendorName}" />
+						<Text id="_IDGenTeuxt16"
+						text="{successIModel>vendorCategory}" />
+						<Text id="_IDGenTeuxtu16"
+						text="{successIModel>comments}" />
+                        <Text id="_IDGenText17"
+						text="{successIModel>currentDate}" />
+						<Button id="_IDGenButtonPreview" text="Preview" type="Emphasized" press="onPreviewFileInProgress" icon="sap-icon://document-text" />
+        
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+ 
+   </ScrollContainer>
+				</IconTabFilter>
+							
+							</items>
+						</IconTabBar>
+                        	</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

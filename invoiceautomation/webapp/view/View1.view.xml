@@ -1,0 +1,194 @@
+<mvc:View controllerName="invoiceautomation.invoiceautomation.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:ui="sap.ui.table" xmlns:f="sap.ui.layout.form">
+    <Shell id="shell">
+		<App id="app" class="myAppDemoWT">
+			<pages>
+				<Page id="page" titleAlignment="Center">
+					<customHeader>
+						<Bar id="_IDGenBar1">
+							<contentLeft>
+								<Image id="_IDGenImage1" src="{logoModel>/logoSrc}" alt="Logo" height="{logoModel>/height}" width="{logoModel>/width}"/>
+							</contentLeft>
+							<contentMiddle>
+								<FlexBox id="_IDGenFlexBox1" alignItems="Center" justifyContent="Center">
+									<items>
+										<Text id="_IDGenText1" text="VENDOR PORTAL" textAlign="Center" renderWhitespace="true" class="redText"/>
+									</items>
+								</FlexBox>
+							</contentMiddle>
+                            	<contentRight>
+                                 <Button id="_IDGenButton2" type="Emphasized" icon="sap-icon://navigation-right-arrow" press="onNavToSecondView" />
+                </contentRight>
+						</Bar>
+					</customHeader>
+					<content>
+
+						<IconTabBar id="idIconTabBarFiori21" expandable="false" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" >
+							<items>
+							<IconTabFilter id="_IDGenIconTabFilter3" text="VENDOR" key="approverDelegation">
+			 <Table id="idProductsTable1"
+		inset="false"
+		items="{
+			path: 'vendorModel>/VendorDetails'
+		}">
+		<columns>
+			<Column id="_IDGenColumn10"
+				width="12em">
+				<Text id="_IDGenText22" text="S.NO" />
+			</Column>
+			<Column id="_IDGenColumn19"
+				width="12em">
+				<Text id="_IDGenText18" text="VENDOR ID" />
+			</Column>
+            <Column id="_IDGenColumn71"
+				width="12em">
+				<Text id="_IDGenText81" text="VENDOR NAME" />
+			</Column>
+            <Column id="_IDGenColumn91"
+				width="12em">
+				<Text id="_IDGenText220" text="VENDOR CATEGORY" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem id="_IDGenColumnListItem3" vAlign="Middle">
+				<cells>
+			
+					<Text id="_IDGenText72"
+						text="{vendorModel>SNO}" />
+                        <Text id="_IDGenText73"
+						text="{vendorModel>VENDORID}" />
+                        <Text id="_IDGenText74"
+						text="{vendorModel>VENDORNAME}" />
+						<Text id="_IDGenText57"
+						text="{vendorModel>VENDORCATEGORY}" />
+                       
+						
+        
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</IconTabFilter>
+								<IconTabFilter id="_IDGenIconTabFilter1" text="VENDOR" key="approverDelegation">
+			 <Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: 'vendorModel>/VendorDetails'
+		}">
+		<columns>
+			<Column id="_IDGenColumn5"
+				width="12em">
+				<Text id="_IDGenText6" text="S.NO" />
+			</Column>
+			<Column id="_IDGenColumn13"
+				width="12em">
+				<Text id="_IDGenText14" text="VENDOR ID" />
+			</Column>
+            <Column id="_IDGenColumn7"
+				width="12em">
+				<Text id="_IDGenText8" text="VENDOR NAME" />
+			</Column>
+            <Column id="_IDGenColumn9"
+				width="12em">
+				<Text id="_IDGenText10" text="VENDOR CATEGORY" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem id="_IDGenColumnListItem2" vAlign="Middle">
+				<cells>
+			
+					<Text id="_IDGenText7"
+						text="{vendorModel>SNO}" />
+                        <Text id="_IDGenText11"
+						text="{vendorModel>VENDORID}" />
+                        <Text id="_IDGenText12"
+						text="{vendorModel>VENDORNAME}" />
+						<Text id="_IDGenText16"
+						text="{vendorModel>VENDORCATEGORY}" />
+                       
+						
+        
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</IconTabFilter>
+
+	<IconTabFilter id="_IDGenIconTabFilter2" text="UPLOAD INVOICE" key="approverDelegation">
+						  <Table id="idApproverTable" inset="false" items="{ path: 'vendorModel>/Approvers' }" mode="MultiSelect">
+        <headerToolbar>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                <Button id="_IDGenButton1" text="ADD" type="Emphasized" press="onAdd" icon="sap-icon://add"/>
+    
+			<Button text="Delete" type="Emphasized" press="onDeleteSelected" enabled="true" id="deleteButton" icon="sap-icon://delete"/>
+								
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="_IDGenColumn1">
+                <Text id="_IDGenText2" text="Trade ID"/>
+            </Column>
+			<Column id="_IDGenColumn18">
+                <Text id="_IDGenText19" text="Trade Name"/>
+            </Column>
+			<Column id="_IDGenColumn20">
+                <Text id="_IDGenText21" text="Vendor ID"/>
+            </Column>
+			<Column id="_IDGenColumn21">
+                <Text id="_IDGenText20" text="Vendor Name"/>
+            </Column>
+			<Column id="_IDGenColumn3">
+                <Text id="_IDGenText4" text="Vendor Category"/>
+            </Column>
+            <Column id="_IDGenColumn2">
+                <Text id="_IDGenText3" text="Comments"/>
+            </Column>
+          <Column id="_IDGenColumn4">
+            <Text id="_IDGenText5" text="Actions"/>
+        </Column>
+        </columns>
+        <items>
+            <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+                <cells>
+                    <Input id="_IDGenInput1"
+                        value="{vendorModel>tradeId}"
+                        placeholder="Enter text"/>
+						<Input id="_IDGenInput2"
+                        value="{vendorModel>tradeName}"
+                        placeholder="Enter text"/>
+						<Input id="_IDGenInput3"
+                        value="{vendorModel>vendorId}"
+                        placeholder="Enter text"/>
+						<Input id="_IDGenInput4"
+                        value="{vendorModel>vendorName}"
+                        placeholder="Enter text"/>
+						 <DatePicker id="_IDGenDatePicker1"
+                        value="{vendorModel>vendorCategory}"
+                        placeholder="Enter Date"/>
+                    <u:FileUploader id="_IDGenFileUploader1"
+                        value="{vendorModel>comments}"
+                        name="myFileUpload"
+						change="onFileChange"
+                        tooltip="Upload your file to the local server"/>
+                      <Button id="_IDGenButton3" text="Save" type="Emphasized" press="onSaveRow" icon="sap-icon://save" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+	</IconTabFilter>
+ 
+							
+							</items>
+						</IconTabBar>
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+
+</mvc:View>

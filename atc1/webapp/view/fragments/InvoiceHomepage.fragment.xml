@@ -1,0 +1,189 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" height="100%"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:w="sap.ui.integration.widgets" xmlns:f="sap.f">
+	<layout:BlockLayout background="Dashboard">
+		<layout:BlockLayoutRow>
+			<layout:BlockLayoutCell title="Invoices" width="2">
+				<GenericTile valueColor="Neutral" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="All Invoices" subheader=""
+					press="press" frameType="">
+					<TileContent unit="Invoices" footer="">
+						<NumericContent value="1000" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile valueColor="Good" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Approved" subheader="" press="press"
+					frameType="">
+					<TileContent unit="Invoices" footer="">
+						<NumericContent value="250" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile valueColor="Critical" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Pending" subheader="" press="press"
+					frameType="">
+					<TileContent unit="Invoices" footer="">
+						<NumericContent value="500" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile valueColor="Error" icon="sap-icon://sys-enter-2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Rejected"
+					subheader="" press="press" frameType="">
+					<TileContent unit="Invoices" footer="">
+						<NumericContent value="250" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+			</layout:BlockLayoutCell>
+			<layout:BlockLayoutCell title="">
+				<viz:VizFrame id="idVizFrame3" vizProperties="{title:{ text:'Invoices Status'} }" vizType="pie" height="300px" width="100%">
+					<viz:dataset>
+						<viz.data:FlattenedDataset data="{/invoices/data}">
+							<viz.data:dimensions>
+								<viz.data:DimensionDefinition name="Status" value="{Status}"/>
+							</viz.data:dimensions>
+							<viz.data:measures>
+								<viz.data:MeasureDefinition name="Amount" value="{Amount}"/>
+							</viz.data:measures>
+						</viz.data:FlattenedDataset>
+					</viz:dataset>
+					<viz:feeds>
+						<viz.feeds:FeedItem uid="size" type="Measure" values="Amount"/>
+						<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+					</viz:feeds>
+				</viz:VizFrame>
+			</layout:BlockLayoutCell>
+		</layout:BlockLayoutRow>
+	</layout:BlockLayout>
+	<layout:Splitter id="mainSplitter" height="500px" width="100%">
+		<Table id="idProductsTable" class="sapUiResponsiveContentPadding sapUiLargeMarginTop" inset="false"
+			items="{ path: '/ProductCollection', sorter: { path: 'Name' } }" mode="SingleSelectMaster" itemPress="onItemPress">
+			<layoutData>
+				<layout:SplitterLayoutData size="80%" resizable="true"/>
+			</layoutData>
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Invoices" level="H2"/>
+						<ToolbarSpacer/>
+						<ToolbarSpacer/>
+						<SearchField width="50%"></SearchField>
+						<ToolbarSpacer/>
+						<Button press="createInvoice" text="Upload Invoice" type="Emphasized"></Button>
+						<!--<Button id="idEditInvoice" icon="sap-icon://edit" press="onEditInvoice" text="Edit" type="Emphasized"></Button>-->
+						<!--<Button id="idSaveInvoice" icon="sap-icon://save" press="onSaveInvoice" text="Save" type="Emphasized" visible="false"></Button>-->
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<infoToolbar>
+				<OverflowToolbar>
+					<Label text="Invoices"/>
+				</OverflowToolbar>
+			</infoToolbar>
+			<columns>
+				<Column width="12em">
+					<Text text="Trade Number"/>
+				</Column>
+				<Column width="12em">
+					<Text text="Invoice Number"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="Supplier"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+					<Text text="Billing Date"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+					<Text text="Amount"/>
+				</Column>
+				<Column hAlign="Center">
+					<Text text="Status"/>
+				</Column>
+				<Column hAlign="Center">
+					<Text text="Attachment"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem press=".onRowClick" type="Navigation" vAlign="Middle">
+					<cells>
+						<!--<ObjectIdentifier title="{Name}" text="{ProductId}"/>-->
+						<!--	<Text text="{ui>InvoiceID}12" visible="{=${ui>/UIState}==='Display'}"></Text>
+					<Text text="{ui>InvoiceID}" visible="{=${ui>/UIState}==='Display'}"></Text>
+					<Text text="{ui>SupplierName}" visible="{=${ui>/UIState}==='Display'}"></Text>
+					<Text text="{ui>Date}" visible="{=${ui>/UIState}==='Display'}"></Text>
+					<Text text="{ui>Price}" visible="{=${ui>/UIState}==='Display'}"></Text>
+					-->
+						<!--<Input value="{DocumentNumber}12" editable="{=${/UIState}==='Edit'}"/>-->
+						<Link press="onRowClick" text="{TradeNumber}"></Link>
+						<Link press="onRowClick" text="{DocumentNumber}"></Link>
+						<!--<Text text="{ShopId}"/>-->
+						<Input value="{SenderName}" editable="{=${/UIState}==='Edit'}"/>
+						<Input value="{currentDate}" editable="{=${/UIState}==='Edit'}"/>
+						<Input value="{GrossAmount}" editable="{=${/UIState}==='Edit'}"/>
+						<ObjectStatus class="sapUiSmallMarginBottom" text="{status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success" visible="true"/>
+						<Button icon="sap-icon://document"/>
+						<!--<Image src="test-resources/sap/m/UploadSetwithTableSampleFiles/Instructions.pdf" class="sapMUSTItemImage sapMUSTItemIcon" visible="true"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<form:SimpleForm id="SimpleFormChange354wideDual" editable="true" layout="ResponsiveGridLayout"
+			title="Trade Details for {/SelectedTrade/TradeNumber}" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+			emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"
+			visible="true">
+			<form:content>
+				<core:Title text=""/>
+				<Label text="Invoice ID"/>
+				<Text text="{/SelectedTrade/TradeNumber}"/>
+				<Label text="Document Number"/>
+				<Text text="{/SelectedTrade/DocumentNumber}"/>
+				<Label text="Sender Name"/>
+				<Text text="{/SelectedTrade/SenderName}"/>
+				<Label text="Gross Amount"/>
+				<Text text="{/SelectedTrade/GrossAmount}"/>
+				<Label text="Supplier Name"/>
+				<Text text="{/SelectedTrade/SupplierName}"/>
+				<Label text="Status"/>
+				<ObjectStatus class="sapUiSmallMarginBottom" text="{status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success" visible="true"/>
+				<Label text="Weight Unit"/>
+				<Text text="{/SelectedTrade/WeightUnit}"/>
+				<Label text="Description"/>
+				<Text text="{/SelectedTrade/Description}"/>
+				<Label text="Name"/>
+				<Text text="{/SelectedTrade/Name}"/>
+				<Label text="Billing Date"/>
+				<Text text="{/SelectedTrade/BillingDate}"/>
+				<Label text="Status"/>
+				<Text text="{/SelectedTrade/Status}"/>
+				<Label text="Quantity"/>
+				<Text text="{/SelectedTrade/Quantity}"/>
+				<Label text="Unit of Measure"/>
+				<Text text="{/SelectedTrade/UoM}"/>
+				<Label text="Currency Code"/>
+				<Text text="{/SelectedTrade/CurrencyCode}"/>
+				<Label text="Price"/>
+				<Text text="{/SelectedTrade/Price}"/>
+				<Label text="Width"/>
+				<Text text="{/SelectedTrade/Width}"/>
+				<Label text="Depth"/>
+				<Text text="{/SelectedTrade/Depth}"/>
+				<Label text="Height"/>
+				<Text text="{/SelectedTrade/Height}"/>
+				<Label text="Date"/>
+				<Text text="{/SelectedTrade/Date}"/>
+			</form:content>
+		</form:SimpleForm>
+	</layout:Splitter>
+	<!--<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="false" class="sapUiResponsiveContentPadding">
+							<items>
+								<IconTabFilter key="info" icon="sap-icon://hint" iconColor="Positive">
+									<Text text="Info content goes here ..."/>
+								</IconTabFilter>
+								<IconTabSeparator icon=""/>
+								<IconTabFilter key="attachments" icon="sap-icon://attachment" iconColor="Neutral" count="3">
+									<Text text="Attachments go here ..."/>
+								</IconTabFilter>
+								<IconTabFilter key="notes" icon="sap-icon://notes" count="12">
+									<Text text="Notes go here ..."/>
+								</IconTabFilter>
+								<IconTabSeparator icon=""/>
+								<IconTabFilter key="people" icon="sap-icon://group" iconColor="Negative">
+									<Text text="People content goes here ..."/>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>-->
+</core:FragmentDefinition>

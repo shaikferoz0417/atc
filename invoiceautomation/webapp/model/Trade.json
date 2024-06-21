@@ -1,0 +1,55 @@
+{
+    "TradeDetails":[
+    {
+        "SNO": 1,
+        "TRADEID": "T001",
+        "TRADENAME": "New York Stock Exchange"
+    },
+    {
+        "SNO": 2,
+        "TRADEID": "T002",
+        "TRADENAME": "Nasdaq"
+    },
+    {
+        "SNO": 3,
+        "TRADEID": "T003",
+        "TRADENAME": "London Stock Exchange"
+    },
+    {
+        "SNO": 4,
+        "TRADEID": "T004",
+        "TRADENAME": "Tokyo Stock Exchange"
+    },
+    {
+        "SNO": 5,
+        "TRADEID": "T005",
+        "TRADENAME": "Shanghai Stock Exchange"
+    },
+    {
+        "SNO": 6,
+        "TRADEID": "T006",
+        "TRADENAME": "Hong Kong Stock Exchange"
+    },
+    {
+        "SNO": 7,
+        "TRADEID": "T007",
+        "TRADENAME": "Euronext"
+    },
+    {
+        "SNO": 8,
+        "TRADEID": "T008",
+        "TRADENAME": "Shenzhen Stock Exchange"
+    },
+    {
+        "SNO": 9,
+        "TRADEID": "T009",
+        "TRADENAME": "Toronto Stock Exchange"
+    },
+    {
+        "SNO": 10,
+        "TRADEID": "T010",
+        "TRADENAME": "Deutsche Börse"
+    }
+]
+
+}

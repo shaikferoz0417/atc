@@ -1,0 +1,96 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:w="sap.ui.integration.widgets" xmlns:f="sap.f">
+	<layout:BlockLayout background="Dashboard">
+		<layout:BlockLayoutRow>
+			<layout:BlockLayoutCell title="">
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus2" header="Total Complaints" press="press">
+					<TileContent>
+						<NumericContent value="1500" icon="sap-icon://documents" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus3" header="Open Complaints" press="press">
+					<TileContent>
+						<NumericContent value="400" icon="sap-icon://documents" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus1" header="Closed Complaints" press="press">
+					<TileContent >
+						<NumericContent value="900" icon="sap-icon://documents" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+			</layout:BlockLayoutCell>
+			<layout:BlockLayoutCell title="" width="2">
+				<viz:VizFrame id="idVizFrame1" vizProperties="{title:{ text:'Complaints'} }" vizType="pie" height="300px" width="100%">
+					<viz:dataset>
+						<viz.data:FlattenedDataset data="{/outstandingInvoices/data}">
+							<viz.data:dimensions>
+								<viz.data:DimensionDefinition name="Status" value="{Status}"/>
+							</viz.data:dimensions>
+							<viz.data:measures>
+								<viz.data:MeasureDefinition name="Amount" value="{Amount}"/>
+							</viz.data:measures>
+						</viz.data:FlattenedDataset>
+					</viz:dataset>
+					<viz:feeds>
+						<viz.feeds:FeedItem uid="size" type="Measure" values="Amount"/>
+						<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+					</viz:feeds>
+				</viz:VizFrame>
+			</layout:BlockLayoutCell>
+		</layout:BlockLayoutRow>
+	</layout:BlockLayout>
+	<Table id="idProductsTable1" class="sapUiResponsiveContentPadding sapUiLargeMarginTop" inset="false"
+		items="{ path: 'ui>/ComplaintList', sorter: { path: 'Name' } }">
+		<!--	<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Products" level="H2"/>
+										<ToolbarSpacer/>
+										<ComboBox id="idPopinLayout" placeholder="Popin layout options" change="onPopinLayoutChanged">
+											<items>
+												<core:Item text="Block" key="Block"/>
+												<core:Item text="Grid Large" key="GridLarge"/>
+												<core:Item text="Grid Small" key="GridSmall"/>
+											</items>
+										</ComboBox>
+										<Label text="Sticky options:"/>
+										<CheckBox text="ColumnHeaders" select="onSelect"/>
+										<CheckBox text="HeaderToolbar" select="onSelect"/>
+										<CheckBox text="InfoToolbar" select="onSelect"/>
+										<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>-->
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Complains"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column width="12em">
+				<Text text="Complain ID"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Descriprion"/>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+				<Text text="Raised Date"/>
+			</Column>
+			<Column hAlign="Center">
+				<Text text="Status"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem press="onPress" vAlign="Middle">
+				<cells>
+					<!--<ObjectIdentifier title="{Name}" text="{ProductId}"/>-->
+					<Text text="{ui>ComplainID}"/>
+					<Text text="{ui>Description}"/>
+					<Text text="{ui>Date}"/>
+					<ObjectStatus class="sapUiSmallMarginBottom" text="{ui>Status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
