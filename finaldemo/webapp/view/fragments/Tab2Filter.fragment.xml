@@ -1,7 +1,0 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
-	<u:Menu id="_IDGenMenu1">
-		<u:MenuItem id="_IDGenMenuItem1" text="Sort Ascending" select="handleMenuItemPressAdministratorTab2"/>
-		<u:MenuItem id="_IDGenMenuItem2" text="Sort Descending" select="handleMenuItemPressAdministratorTab2"/>
-		
-	</u:Menu>
-</core:FragmentDefinition>
