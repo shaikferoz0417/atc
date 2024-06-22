@@ -4,17 +4,25 @@
     "id": "com.atc1",
     "type": "application",
     "i18n": "i18n/i18n.properties",
+    
     "applicationVersion": {
       "version": "0.0.1"
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
     "resources": "resources.json",
+ 
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.13.6",
       "toolsId": "acdbaf48-7ff4-4257-aee8-43790dc0543e"
     },
+    "dataSources": {
+			"localUIModel": {
+				"uri": "model/ProductCollection.json",
+				"type": "JSON"
+			}
+		},
     "crossNavigation": {
       "inbounds": {
         "atc-display": {
@@ -69,6 +77,10 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "com.atc1.i18n.i18n"
+        },
+      "ui": {
+          "type": "sap.ui.model.json.JSONModel",
+          "uri": "model/ProductCollection.json"
         }
       }
     },

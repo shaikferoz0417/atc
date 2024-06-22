@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChangeColumn_twoGroups234"
+			editable="true"
+			layout="ColumnLayout"
+			title="Supplier"
+			columnsM="2"
+			columnsL="3"
+			columnsXL="4"
+			>
+			<f:content>
+				<core:Title text="Address" />
+				<Label text="Name" />
+				<Input id="name" value="{/SupplierCollection/0/SupplierName}" />
+				<Label text="Street/No." />
+				<Input value="{/SupplierCollection/0/Street}">
+				</Input>
+				<Input value="{/SupplierCollection/0/HouseNumber}">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="2" cellsLarge="1" />
+					</layoutData>
+				</Input>
+				<Label text="ZIP Code/City" />
+				<Input value="{/SupplierCollection/0/ZIPCode}">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="3" cellsLarge="2" />
+					</layoutData>
+				</Input>
+				<Input value="{/SupplierCollection/0/City}" />
+				<Label text="Country" />
+				<Select id="country" selectedKey="{/SupplierCollection/0/Country}">
+					<items>
+						<core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Label text="Web" />
+				<Input value="{/SupplierCollection/0/Url}" type="Url"/>
+				<core:Title text="Contact" />
+				<Label text="Twitter" />
+				<Input value="{/SupplierCollection/0/Twitter}" />
+				<Label text="Email" />
+				<Input value="{/SupplierCollection/0/Email}" type="Email"/>
+				<Label text="Tel." />
+				<Input value="{/SupplierCollection/0/Tel}" type="Tel"/>
+				<Label text="SMS" />
+				<Input value="{/SupplierCollection/0/Sms}" type="Tel"/>
+				<Label text="Mobile" />
+				<Input value="{/SupplierCollection/0/Mobile}" type="Tel"/>
+				<Label text="Pager" />
+				<Input value="{/SupplierCollection/0/Pager}" type="Tel"/>
+				<Label text="Fax" />
+				<Input value="{/SupplierCollection/0/Fax}" type="Tel"/>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

@@ -3,61 +3,74 @@
 	xmlns:viz.data="sap.viz.ui5.data" xmlns:w="sap.ui.integration.widgets" xmlns:f="sap.f">
 	<layout:BlockLayout background="Dashboard">
 		<layout:BlockLayoutRow>
-			<layout:BlockLayoutCell title="">
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus2" header="Total Complaints" press="press">
+			<layout:BlockLayoutCell title="Complaints"  width="2">
+				<GenericTile valueColor="Neutral"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus2" header="Total Complaints" press="press">
 					<TileContent>
 						<NumericContent value="1500" icon="sap-icon://documents" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus3" header="Open Complaints" press="press">
+				<GenericTile valueColor="Critical" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus3" header="Open Complaints" press="press">
 					<TileContent>
 						<NumericContent value="400" icon="sap-icon://documents" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus1" header="Closed Complaints" press="press">
+				
+				<GenericTile  valueColor="Error"   class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus1" header="Pending Complaints" press="press">
 					<TileContent >
 						<NumericContent value="900" icon="sap-icon://documents" withMargin="false"/>
+					</TileContent>
+				</GenericTile>
+				<GenericTile   valueColor="Good" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout tileStatus3" header="Resolved Complaints" press="press">
+					<TileContent>
+						<NumericContent value="700" icon="sap-icon://documents" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell title="" width="2">
 				<viz:VizFrame id="idVizFrame1" vizProperties="{title:{ text:'Complaints'} }" vizType="pie" height="300px" width="100%">
-					<viz:dataset>
-						<viz.data:FlattenedDataset data="{/outstandingInvoices/data}">
+						<viz:dataset>
+						<viz.data:FlattenedDataset data="{/complaints/data}">
 							<viz.data:dimensions>
 								<viz.data:DimensionDefinition name="Status" value="{Status}"/>
 							</viz.data:dimensions>
 							<viz.data:measures>
-								<viz.data:MeasureDefinition name="Amount" value="{Amount}"/>
+								<viz.data:MeasureDefinition name="Count" value="{Count}"/>
 							</viz.data:measures>
 						</viz.data:FlattenedDataset>
 					</viz:dataset>
 					<viz:feeds>
-						<viz.feeds:FeedItem uid="size" type="Measure" values="Amount"/>
+						<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
 						<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
 					</viz:feeds>
+						
 				</viz:VizFrame>
 			</layout:BlockLayoutCell>
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>
 	<Table id="idProductsTable1" class="sapUiResponsiveContentPadding sapUiLargeMarginTop" inset="false"
-		items="{ path: 'ui>/ComplaintList', sorter: { path: 'Name' } }">
+		items="{ path: '/ComplaintList'}">
 		<headerToolbar>
 			<OverflowToolbar>
 				<content>
 					<ToolbarSpacer/>
-					<Button id="toggleInfoToolbar" type="Emphasized" text="Create Complaint" press="onToggleInfoToolbar"/>
+					<Button id="toggleInfoToolbar" type="Emphasized" text="Create Complaint" press="onComplaintPress"/>
 				</content>
 			</OverflowToolbar>
 		</headerToolbar>
 		<infoToolbar>
 			<OverflowToolbar>
-				<Label text="Complains"/>
+				<Label text="Complaints"/>
 			</OverflowToolbar>
 		</infoToolbar>
 		<columns>
 			<Column width="12em">
 				<Text text="Complain ID"/>
+			</Column>
+				<Column width="12em">
+				<Text text="Invoice Number"/>
+			</Column>
+			<Column width="12em">
+				<Text text="Customer"/>
 			</Column>
 			<Column minScreenWidth="Tablet" demandPopin="true">
 				<Text text="Descriprion"/>
@@ -73,10 +86,12 @@
 			<ColumnListItem press="onPress" vAlign="Middle">
 				<cells>
 					<!--<ObjectIdentifier title="{Name}" text="{ProductId}"/>-->
-					<Text text="{ui>ComplainID}"/>
-					<Text text="{ui>Description}"/>
-					<Text text="{ui>Date}"/>
-					<ObjectStatus class="sapUiSmallMarginBottom" text="{ui>Status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success"/>
+					<Text text="{ComplaintID}"/>
+					<Text text="{InvoiceNumber}"/>
+					<Text text="{Customer}"/>
+					<Text text="{ComplaintReason}"/>
+					<Text text="{Date}"/>
+					<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success"/>
 				</cells>
 			</ColumnListItem>
 		</items>

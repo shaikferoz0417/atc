@@ -64,8 +64,8 @@ sap.ui.define(["../model/Constants"], function (Constants) {
 						"X-Requested-With": "XMLHttpRequest"
 					},
 
-					// url: proxyUrl + targetUrl,
-					url:'/api',
+					url: proxyUrl + targetUrl,
+					// url:'/api',
 					type: "POST",
 					contentType: "application/json",
 					data: JSON.stringify(oPayload),
