@@ -169,7 +169,7 @@
 										</TileContent>
 				
 									</GenericTile>
-									<w:Card class="sapUiSmallMarginBegin" width="50%" manifest="../model/cardManifest.json">
+									<w:Card class="sapUiSmallMarginBegin" width="50%" manifest="./model/cardManifest.json">
 										<w:layoutData>
 											<f:GridContainerItemLayoutData minRows="3" columns="4"/>
 										</w:layoutData>
@@ -322,7 +322,7 @@
 									</viz:VizFrame>
 								</layout:BlockLayoutCell>
 								<layout:BlockLayoutCell >
-									<w:Card class="sapUiSmallMarginBegin" width="100%" manifest="../model/cardManifestForVendorInfo.json">
+									<w:Card class="sapUiSmallMarginBegin" width="100%" manifest="./model/cardManifestForVendorInfo.json">
 										<w:layoutData>
 											<f:GridContainerItemLayoutData minRows="3" columns="4"/>
 										</w:layoutData>

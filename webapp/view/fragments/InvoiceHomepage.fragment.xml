@@ -114,7 +114,9 @@
 						<Input value="{SenderName}" editable="{=${/UIState}==='Edit'}"/>
 						<Input value="{currentDate}" editable="{=${/UIState}==='Edit'}"/>
 						<Input value="{GrossAmount}" editable="{=${/UIState}==='Edit'}"/>
-						<ObjectStatus class="sapUiSmallMarginBottom" text="{status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success" visible="true"/>
+						<ObjectStatus class="sapUiSmallMarginBottom" text="{ path: 'status'
+                            }" inverted="true" icon="sap-icon://sys-enter-2" state="{ path: 'status',formatter: '.formatter.statusState'
+                            }" visible="true"/>
 						<Button icon="sap-icon://document" press="onAttachmentPress"/>
 						<!--<Image src="test-resources/sap/m/UploadSetwithTableSampleFiles/Instructions.pdf" class="sapMUSTItemImage sapMUSTItemIcon" visible="true"/>-->
 					</cells>
@@ -139,7 +141,7 @@
 				<Text text="{/SelectedTrade/GrossAmount}"/>
 			
 				<Label text="Status"/>
-				<ObjectStatus class="sapUiSmallMarginBottom" text="{status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success" visible="true"/>
+				<ObjectStatus class="sapUiSmallMarginBottom" text="{/SelectedTrade/status}" state="{path:'/SelectedTrade/status',formatter:'.formatter.statusState'}" inverted="true" icon="sap-icon://sys-enter-2" visible="true"/>
 				<Label text="Weight Unit"/>
 				<Text text="{/SelectedTrade/WeightUnit}"/>
 				<Label text="Description"/>
