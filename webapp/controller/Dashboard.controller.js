@@ -15,7 +15,7 @@ sap.ui.define([
 	"../model/formatter"
 ], function (Controller, JSONModel, Fragment, WorkflowService, BusyDialog, PDFViewer, Filter, FilterOperator, Dialog, Input, Label, Button, UploadCollectionItem, formatter) {
 	"use strict";
-	
+
 	return Controller.extend("com.atc1.controller.Dashboard", {
 
 		/**
@@ -311,6 +311,9 @@ sap.ui.define([
 			// Set the initial form to be the display one
 			this._showFormFragment("DisplayProfile");
 
+			//set Theme
+			this.currentTheme = sap.ui.getCore().getConfiguration().getTheme();
+
 			//Complaint Dialog
 
 			this._oComplaintDialog = new Dialog({
@@ -605,6 +608,20 @@ sap.ui.define([
 		},
 		onComplaintPress: function () {
 			this._oComplaintDialog.open();
+		},
+		onAppearance: function () {
+
+			if (this.currentTheme === "sap_horizon") {
+				this.currentTheme = "sap_horizon_dark";
+				this.byId("idAppearance").setTooltip("Switch to Light Mode");
+				this.byId("idAppearance").setIcon("sap-icon://light-mode");
+			} else {
+				this.currentTheme = "sap_horizon";
+				this.byId("idAppearance").setTooltip("Switch to Dark Mode");
+				this.byId("idAppearance").setIcon("sap-icon://dark-mode");
+			}
+
+			sap.ui.getCore().applyTheme(this.currentTheme);
 		}
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

@@ -91,7 +91,7 @@
 					<Text text="{Customer}"/>
 					<Text text="{ComplaintReason}"/>
 					<Text text="{Date}"/>
-					<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}" inverted="true" icon="sap-icon://sys-enter-2" state="Success"/>
+					<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}" state="{path:'Status',formatter:'.formatter.ComplaintStatusState'}" inverted="true" />
 				</cells>
 			</ColumnListItem>
 		</items>
