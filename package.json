@@ -9,16 +9,13 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {
-    "to": "^0.2.9",
-    "update": "^0.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@sap/ui5-builder-webide-extension": "^1.1.9",
+    "@ui5/cli": "^3.0.0",
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^3.11.0",
-    "mbt": "^1.2.27",
-    "ui5-task-zipper": "^3.1.3"
+    "@sap/ui5-builder-webide-extension": "^1.1.9",
+    "ui5-task-zipper": "^3.1.3",
+    "mbt": "^1.2.27"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comatc1-display\"",
@@ -31,7 +28,7 @@
     "unit-tests": "fiori run --open 'test/unit/unitTests.qunit.html'",
     "int-tests": "fiori run --open 'test/integration/opaTests.qunit.html'",
     "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
-    "build:mta": "rimraf resources mta_archives &&  ",
+    "build:mta": "rimraf resources mta_archives && mbt build",
     "undeploy": "cf undeploy comatc1 --delete-services --delete-service-keys --delete-service-brokers"
   },
   "sapuxLayer": "CUSTOMER_BASE",
