@@ -84,13 +84,19 @@
 						<tnt:NavigationListItem text="Deal History"/>
 						<tnt:NavigationListItem text="New Deals"/>-->
 					</tnt:NavigationListItem>
-					<tnt:NavigationListItem key="InvoiceHomepage" text="Invoices" icon="sap-icon://documents">
-						<!--<tnt:NavigationListItem key="root2" text="Create Invoice"/>-->
+		<!-- 			<tnt:NavigationListItem key="AccountReceivable" text="Invoices" icon="sap-icon://documents">
+
+						<tnt:NavigationListItem key="AccountReceivable" text="Account Receivable"/>
+						<tnt:NavigationListItem key="AccountPayable" text="Account Payable"/> -->
 						<!--	<tnt:NavigationListItem text="Invoice List"/>
 						<tnt:NavigationListItem text="Invoice Details"/>
 						<tnt:NavigationListItem text="Create Invoice"/>
 						<tnt:NavigationListItem text="Invoice Search"/>-->
-					</tnt:NavigationListItem>
+					<!-- </tnt:NavigationListItem> -->
+					<tnt:NavigationListGroup text="Invoices">
+						<tnt:NavigationListItem key="Receivables" text="Receivables" icon="sap-icon://cause"/>
+						<tnt:NavigationListItem key="Payables" text="Payables" icon="sap-icon://money-bills"/>
+					</tnt:NavigationListGroup>
 					<tnt:NavigationListItem key="ComplaintHome" text="Complaints" icon="sap-icon://alert">
 						<!--	<tnt:NavigationListItem key="ComplaintList" text="Complaint List"/>
 						<tnt:NavigationListItem key="createComplaint" text="Create Complaint"/>-->
@@ -103,6 +109,7 @@
 						<!--	<tnt:NavigationListItem text="Driven"/>
 						<tnt:NavigationListItem text="Walked"/>-->
 					</tnt:NavigationListItem>
+					
 					<!--<tnt:NavigationListGroup text="Deals">
 						<tnt:NavigationListItem text="People" icon="sap-icon://people-connected"/>
 						<tnt:NavigationListItem text="Building" icon="sap-icon://building"/>
@@ -340,8 +347,11 @@
 					<ScrollContainer id="page1" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding">
 						<Text text="This is the first page"/>
 					</ScrollContainer>
-					<ScrollContainer id="InvoiceHomepage" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding">
+					<ScrollContainer id="Receivables" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding">
 						<core:Fragment fragmentName="com.atc1.view.fragments.InvoiceHomepage" type="XML"/>
+					</ScrollContainer>
+					<ScrollContainer id="Payables" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding">
+						<core:Fragment fragmentName="com.atc1.view.fragments.Payables" type="XML"/>
 					</ScrollContainer>
 					<ScrollContainer id="root2" horizontal="false" vertical="true" height="100%" class="sapUiContentPadding">
 						<core:Fragment fragmentName="com.atc1.view.fragments.CreateInvoice" type="XML"/>

@@ -3,26 +3,26 @@
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:w="sap.ui.integration.widgets" xmlns:f="sap.f">
 	<layout:BlockLayout background="Dashboard">
 		<layout:BlockLayoutRow>
-			<layout:BlockLayoutCell title="Invoices" width="2">
+			<layout:BlockLayoutCell title="Payable Invoices" width="2">
 				<GenericTile valueColor="Neutral" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="All Invoices" subheader=""
 					press="press" >
 					<TileContent unit="Invoices" footer="">
 						<NumericContent value="1000" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile valueColor="Good" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Approved" subheader="" press="press"
+				<GenericTile valueColor="Good" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Paid" subheader="" press="press"
 					>
 					<TileContent unit="Invoices" footer="">
 						<NumericContent value="250" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile valueColor="Critical" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Pending" subheader="" press="press"
+				<GenericTile valueColor="Critical" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Part Paid" subheader="" press="press"
 					>
 					<TileContent unit="Invoices" footer="">
 						<NumericContent value="500" withMargin="false"/>
 					</TileContent>
 				</GenericTile>
-				<GenericTile valueColor="Error" icon="sap-icon://sys-enter-2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Rejected"
+				<GenericTile valueColor="Error" icon="sap-icon://sys-enter-2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout " header="Unpaid"
 					subheader="" press="press" >
 					<TileContent unit="Invoices" footer="">
 						<NumericContent value="250" withMargin="false"/>
@@ -30,9 +30,9 @@
 				</GenericTile>
 			</layout:BlockLayoutCell>
 			<layout:BlockLayoutCell title="">
-				<viz:VizFrame id="idVizFrame3" vizProperties="{title:{ text:'Invoices Status'} }" vizType="pie" height="300px" width="100%">
+				<viz:VizFrame id="idVizFrame3Payable" vizProperties="{title:{ text:'Payment Status'} }" vizType="pie" height="300px" width="100%">
 					<viz:dataset>
-						<viz.data:FlattenedDataset data="{/invoices/data}">
+						<viz.data:FlattenedDataset data="{/payableInvoicesViz/data}">
 							<viz.data:dimensions>
 								<viz.data:DimensionDefinition name="Status" value="{Status}"/>
 							</viz.data:dimensions>
@@ -49,9 +49,9 @@
 			</layout:BlockLayoutCell>
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>
-	<layout:Splitter id="mainSplitter" height="500px" width="100%">
-		<Table id="idProductsTable" class="sapUiResponsiveContentPadding sapUiLargeMarginTop" inset="false"
-			items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
+	<layout:Splitter id="mainSplitterPayable" height="500px" width="100%">
+		<Table id="idProductsTablePayable" class="sapUiResponsiveContentPadding sapUiLargeMarginTop" inset="false"
+			items="{ path: '/payableInvoices', sorter: { path: 'Name' } }">
 			<layoutData>
 				<layout:SplitterLayoutData size="80%" resizable="true"/>
 			</layoutData>
@@ -63,7 +63,7 @@
 						<ToolbarSpacer/>
 						<SearchField width="50%" liveChange="onLiveChange"></SearchField>
 						<ToolbarSpacer/>
-						<Button press="createInvoice" text="Upload Invoice" type="Emphasized"></Button>
+						<!-- <Button press="createInvoice" text="Upload Invoice" type="Emphasized"></Button> -->
 						<!--<Button id="idEditInvoice" icon="sap-icon://edit" press="onEditInvoice" text="Edit" type="Emphasized"></Button>-->
 						<!--<Button id="idSaveInvoice" icon="sap-icon://save" press="onSaveInvoice" text="Save" type="Emphasized" visible="false"></Button>-->
 					</content>
@@ -126,7 +126,7 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<form:SimpleForm id="SimpleFormChange354wideDual" editable="true" layout="ResponsiveGridLayout"
+		<form:SimpleForm id="SimpleFormChange354wideDualPayable" editable="true" layout="ResponsiveGridLayout"
 			title="Trade Details for {/SelectedTrade/TradeNumber}" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
 			emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"
 			visible="true">
